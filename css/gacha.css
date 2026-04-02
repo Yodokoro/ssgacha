@@ -36,15 +36,20 @@
 #gacha-card-container {
   position: relative;
   z-index: 2;
-  width: 90%;
-  max-width: 700px;
+  width: 90vw;
+  max-width: min(90vh * 1.2, 1100px);
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 10連結果グリッド */
 .results-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  gap: clamp(6px, 1.2vw, 16px);
+  width: 100%;
   animation: results-pop 0.5s ease-out;
 }
 
@@ -139,7 +144,7 @@
 }
 
 .sssr-reveal .gacha-card {
-  width: 200px;
+  width: clamp(180px, 25vmin, 320px);
 }
 
 /* SSSRバナー */
@@ -208,10 +213,6 @@
 
   .sssr-reveal .gacha-card {
     width: 160px;
-  }
-
-  #gacha-card-container {
-    width: 95%;
   }
 }
 

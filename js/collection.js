@@ -42,7 +42,7 @@ function generateAllCards(state) {
 function sortCards(cards, sortBy) {
   if (sortBy === "rarity") {
     cards.sort((a, b) => {
-      const rd = RARITIES[a.rarity].order - RARITIES[b.rarity].order;
+      const rd = RARITIES[b.rarity].order - RARITIES[a.rarity].order;
       if (rd !== 0) return rd;
       return a.member.name.localeCompare(b.member.name, "ja");
     });
