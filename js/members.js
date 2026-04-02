@@ -72,7 +72,7 @@ const RIJICHO = {
   id: "special-rijicho",
   name: "理事長",
   generation: "秘密",
-  photoUrl: "rijicho_card.png",
+  photoUrl: "images/rijicho_card.png",
   isSpecial: true
 };
 
