@@ -1,0 +1,227 @@
+/* サマスイコレクション！ ガチャ演出 */
+
+/* オーバーレイ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: overlay-in 0.3s ease-out;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* パーティクルCanvas */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* カード結果コンテナ */
+#gacha-card-container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 700px;
+}
+
+/* 10連結果グリッド */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  animation: results-pop 0.5s ease-out;
+}
+
+@keyframes results-pop {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* スキップヒント */
+.skip-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 10;
+  animation: hint-blink 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.skip-hint.hidden {
+  display: none;
+}
+
+@keyframes hint-blink {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ===== SSSR特別演出 ===== */
+
+/* グリッチ */
+.glitch-effect {
+  animation: glitch 0.15s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); filter: none; }
+  20% { transform: translate(-4px, 2px); filter: hue-rotate(90deg); }
+  40% { transform: translate(3px, -3px); filter: hue-rotate(180deg); }
+  60% { transform: translate(-2px, 1px); filter: hue-rotate(270deg); }
+  80% { transform: translate(4px, -1px); filter: hue-rotate(45deg); }
+  100% { transform: translate(0); filter: none; }
+}
+
+/* 画面シェイク */
+.screen-shake {
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(-5px, 3px); }
+  50% { transform: translate(5px, -5px); }
+  75% { transform: translate(-3px, 5px); }
+  100% { transform: translate(3px, -3px); }
+}
+
+/* 白フラッシュ */
+.white-flash::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  animation: flash 0.5s ease-out forwards;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* SSSRカード出現 */
+.sssr-card-reveal {
+  animation: sssr-card-in 1s ease-out;
+}
+
+@keyframes sssr-card-in {
+  0% { transform: scale(0) rotate(10deg); opacity: 0; }
+  60% { transform: scale(1.15) rotate(-2deg); opacity: 1; }
+  80% { transform: scale(0.98) rotate(1deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.sssr-reveal {
+  display: flex;
+  justify-content: center;
+}
+
+.sssr-reveal .gacha-card {
+  width: 200px;
+}
+
+/* SSSRバナー */
+.sssr-banner {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  background: linear-gradient(90deg,
+    hsl(0, 100%, 65%),
+    hsl(60, 100%, 55%),
+    hsl(120, 100%, 55%),
+    hsl(180, 100%, 55%),
+    hsl(240, 100%, 65%),
+    hsl(300, 100%, 65%),
+    hsl(360, 100%, 65%));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbow-shift 2s linear infinite, banner-pop 0.5s ease-out;
+  text-shadow: none;
+}
+
+@keyframes banner-pop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* SSSR背景エフェクト */
+.sssr-active {
+  background: radial-gradient(ellipse at center, rgba(40, 0, 60, 0.95), rgba(0, 0, 0, 0.95));
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .results-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  .gacha-card .card__name {
+    font-size: 0.55rem;
+  }
+
+  .gacha-card .card__gen {
+    font-size: 0.45rem;
+  }
+
+  .gacha-card .card__rarity {
+    font-size: 0.5rem;
+    padding: 1px 4px;
+    top: 3px;
+    right: 3px;
+  }
+
+  .gacha-card .card__new {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+  }
+
+  .sssr-banner {
+    font-size: 1rem;
+  }
+
+  .sssr-reveal .gacha-card {
+    width: 160px;
+  }
+
+  #gacha-card-container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 400px) {
+  .results-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+
+  .gacha-card .card__info {
+    padding: 3px 4px;
+  }
+}

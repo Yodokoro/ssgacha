@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:summersweet.jp)",
+      "Bash",
+      "Bash(command -v magick)",
+      "Bash(command -v convert)",
+      "Bash(command -v ffmpeg)",
+      "Bash(command -v python)",
+      "Bash(command -v python3)",
+      "Bash(python:*)"
+    ]
+  }
+}

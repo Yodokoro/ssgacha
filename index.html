@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サマスイコレクション！</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/gacha.css">
+  <link rel="prefetch" href="rijicho_card.png">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header id="header">
+    <div class="header-inner">
+      <img src="https://summersweet.jp/wp-content/uploads/2021/12/SummerSweet_Logo_Ver2Plan2.png"
+           alt="SummerSweet！" class="logo">
+      <h1 class="site-title">サマスイコレクション！</h1>
+      <nav class="nav-tabs">
+        <button id="btn-gacha" class="nav-btn active">ガチャ</button>
+        <button id="btn-collection" class="nav-btn">コレクション</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ガチャ画面 -->
+  <main id="screen-gacha" class="screen active">
+    <div class="gacha-area">
+      <div class="gacha-machine">
+        <div class="gacha-deco gacha-deco--left"></div>
+        <div class="gacha-deco gacha-deco--right"></div>
+        <div class="pull-stats">
+          <div class="stat-badge">
+            <span class="stat-badge__label">ガチャ回数</span>
+            <span class="stat-badge__value" id="total-pulls">0</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-badge__label">コレクション</span>
+            <span class="stat-badge__value" id="collection-count">0/216</span>
+          </div>
+        </div>
+        <button id="btn-pull" class="pull-button">
+          <span class="pull-button__text">10連ガチャ！</span>
+          <span class="pull-button__sub">×10</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- コレクション画面 -->
+  <main id="screen-collection" class="screen">
+    <div class="collection-area">
+      <div class="collection-controls">
+        <div class="sort-controls">
+          <span class="sort-label">ソート:</span>
+          <button class="sort-btn active" data-sort="rarity">レア度</button>
+          <button class="sort-btn" data-sort="name">名前</button>
+        </div>
+        <div id="stats-panel" class="stats-panel"></div>
+      </div>
+      <div id="collection-grid" class="card-grid"></div>
+    </div>
+  </main>
+
+  <!-- ガチャ演出オーバーレイ -->
+  <div id="gacha-overlay" class="overlay hidden">
+    <canvas id="particle-canvas"></canvas>
+    <div id="gacha-card-container"></div>
+    <div id="skip-hint" class="skip-hint">クリックでスキップ</div>
+  </div>
+
+  <script src="js/members.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/gacha.js"></script>
+  <script src="js/collection.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

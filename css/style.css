@@ -1,0 +1,350 @@
+/* サマスイコレクション！ メインスタイル */
+
+:root {
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+  --pink-700: #be185d;
+  --pink-800: #9d174d;
+  --pink-900: #831843;
+  --bg: #fff1f5;
+  --text: #831843;
+  --text-light: #be185d;
+  --card-bg: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ヘッダー */
+#header {
+  background: linear-gradient(135deg, var(--pink-500), var(--pink-400));
+  padding: 12px 16px;
+  box-shadow: 0 2px 12px rgba(236, 72, 153, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  padding: 2px;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn.active {
+  background: white;
+  color: var(--pink-600);
+}
+
+/* 画面切り替え */
+.screen {
+  display: none;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ガチャ画面 */
+.gacha-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+}
+
+.gacha-machine {
+  text-align: center;
+  position: relative;
+  padding: 40px;
+}
+
+.gacha-deco {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.gacha-deco--left {
+  top: 0;
+  left: -20px;
+  background: radial-gradient(circle, var(--pink-400), transparent);
+}
+
+.gacha-deco--right {
+  bottom: 0;
+  right: -20px;
+  background: radial-gradient(circle, var(--pink-300), transparent);
+}
+
+.pull-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  background: white;
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.stat-badge__label {
+  font-size: 0.75rem;
+  color: var(--pink-400);
+  font-weight: 700;
+}
+
+.stat-badge__value {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--pink-700);
+}
+
+.pull-button {
+  font-family: inherit;
+  position: relative;
+  padding: 20px 48px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  background: linear-gradient(135deg, var(--pink-500), var(--pink-400));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 16px rgba(236, 72, 153, 0.4),
+    0 0 0 4px var(--pink-200);
+  transition: all 0.2s;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.pull-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 8px 24px rgba(236, 72, 153, 0.5),
+    0 0 0 4px var(--pink-200);
+}
+
+.pull-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.pull-button__text {
+  display: block;
+}
+
+.pull-button__sub {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(236, 72, 153, 0.4), 0 0 0 4px var(--pink-200); }
+  50% { box-shadow: 0 4px 24px rgba(236, 72, 153, 0.6), 0 0 0 8px var(--pink-100); }
+}
+
+/* コレクション画面 */
+.collection-controls {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.1);
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sort-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pink-400);
+}
+
+.sort-btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border: 2px solid var(--pink-300);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--pink-500);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sort-btn:hover {
+  background: var(--pink-50);
+}
+
+.sort-btn.active {
+  background: var(--pink-500);
+  border-color: var(--pink-500);
+  color: white;
+}
+
+.stats-panel {
+  font-size: 0.85rem;
+}
+
+.stats-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--pink-50);
+}
+
+.stat-item .stat-label {
+  font-weight: 900;
+}
+
+.stat-item--n .stat-label { color: #8a8a8a; }
+.stat-item--r .stat-label { color: #3b82f6; }
+.stat-item--sr .stat-label { color: #a855f7; }
+.stat-item--ssr .stat-label { color: #eab308; }
+.stat-item--sssr .stat-label { color: #ff0080; }
+
+.stat-item .stat-value {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stats-summary {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.stats-summary strong {
+  color: var(--pink-700);
+}
+
+/* カードグリッド */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 1rem;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .pull-button {
+    padding: 16px 36px;
+    font-size: 1.2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+  }
+
+  .pull-stats {
+    gap: 8px;
+  }
+
+  .stat-badge {
+    min-width: 100px;
+    padding: 8px 14px;
+  }
+}
